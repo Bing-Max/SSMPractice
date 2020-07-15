@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bing.dao.DeptMapper">
+
+    <select id="getAll" resultType="com.bing.entity.Department">
+        select dept_id, dept_name from dept;
+    </select>
+
+    <insert id="add" parameterType="com.bing.entity.Department">
+        insert into dept (dept_id, dept_name) values (#{deptId}, #{deptName})
+    </insert>
+
+    <select id="getById" resultType="com.bing.entity.Department">
+        select  dept_id, dept_name from dept where dept_id = #{id}
+    </select>
+</mapper>

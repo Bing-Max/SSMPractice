@@ -10,6 +10,9 @@
 
         <association property="department"  select="com.bing.dao.DeptMapper.getById" column="dept_id" />
     </resultMap>
+    <insert id="add" parameterType="user">
+        insert into user(id, name, passwd, dept_id) values (#{id}, #{name}, #{passwd}, #{department.deptId})
+    </insert>
 
     <select id="getAll" resultMap="user">
         select id, name, passwd ,dept_id from user;

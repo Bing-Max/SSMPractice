@@ -2,6 +2,7 @@ package com.bing.controller;
 
 import com.bing.dao.UserMapper;
 import com.bing.entity.User;
+import com.bing.service.UserService;
 import com.bing.utils.CommonBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
     @Autowired
     private CommonBody commonBody;
 
@@ -24,21 +25,17 @@ public class UserController {
     public CommonBody userList(){
         commonBody.setCode(0);
         commonBody.setMsg("获取user列表");
-        return commonBody.putData("list",userMapper.getAll());
+        return commonBody.putData("list",userService.getAll());
     }
 
     @RequestMapping("/login")
     @ResponseBody
     public CommonBody getUser(@RequestParam("name") String name, @RequestParam("passwd") String pwd){
-        User user = userMapper.getByName(name);
-        if(user.getPasswd()!= null && user.getPasswd().equals(pwd)){
-
-            commonBody.setCode(0);
-            commonBody.setMsg("验证成功");
-            return commonBody.putData("user", user);
-        }else{
-             return commonBody.defaultFailed();
-        }
-
+//        System.out.println(userService);
+            if(userService.login(name, pwd)){
+                return new CommonBody().defaultSucces();
+            }else{
+                return new CommonBody().defaultFailed();
+            }
     }
 }

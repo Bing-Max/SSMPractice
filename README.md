@@ -26,6 +26,6 @@ mvn package
 ```
 
 ## 几点说明
-* 项目的具体部署博客：http://www.bingmax.site/blog/2020/07/15/SSM-%E7%AE%80%E5%8D%95%E5%AE%9E%E6%88%98/
+* <a href="http://www.bingmax.site/blog/2020/07/15/SSM-%E7%AE%80%E5%8D%95%E5%AE%9E%E6%88%98/">项目的具体部署博客</a>
 * 项目主要负责响应前端的数据请求
 * 后续项目有新的内容再更新

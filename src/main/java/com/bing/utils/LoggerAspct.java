@@ -16,4 +16,13 @@ public class LoggerAspct {
         System.out.println("end log:" + joinPoint.getSignature().getName());
         return object;
     }
+
+    @Around(value = "execution(* com.bing.utils.MapDataUtils.getData())")
+    public Object logNet(ProceedingJoinPoint joinPoint) throws Throwable{
+        System.out.println("start net access: " + joinPoint.getSignature().getName());
+        Object object = joinPoint.proceed();
+        System.out.println("end net access:" + joinPoint.getSignature().getName());
+        return object;
+    }
+
 }
